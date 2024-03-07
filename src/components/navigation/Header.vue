@@ -13,7 +13,7 @@
                 <!-- <span class="md:hidden lg:hidden block text-[24px]">
                   <Icon :icon="item.icon" />
                 </span> -->
-                <span class="">{{ $t(item.title) }}</span>
+                <span class="">{{ item.title }}</span>
               </router-link>
             </li>
           </ul>
