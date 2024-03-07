@@ -30,14 +30,15 @@
             <template #dropdown>
               <el-dropdown-menu>
                 <el-dropdown-item
-                  class="capitalize text-[16px]"
+                  class="capitalize text-[15px] flex items-center gap-2"
                   v-for="(lang, i) in languageArray"
                   :key="`lang${i}`"
                   :value="lang"
                 >
+                <country-flag :country="getCode(lang)" size="small" />
                   <span
                     :role="lang === selected ? '' : 'button'"
-                    :class="{ active: lang === selected }"
+                    :class="{ 'text-secondary': lang === selected }"
                     @click="changeLang(lang)"
                     >{{ $t(lang) }}</span
                   >
@@ -80,6 +81,18 @@ export default {
     changeLang(value) {
       this.$store.dispatch('home/changeLocale', value)
       this.$i18n.locale = this.$store.state.home.locale
+    },
+
+    getCode(value) {
+      if(value === 'english') {
+        return 'US'
+      }
+      if(value === 'french') {
+        return 'FR'
+      }
+      if(value === 'spanish') {
+        return "ES" 
+      }
     }
   },
 
